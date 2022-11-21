@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  dataBase:
+    image: 'postgres:latest'
+    restart: always
+    container_name: prisma-postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/dataBase:/data/dataBase
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_USERNAME: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_HOST_AUTH_METHOD: trust
+  
+  api:
+    container_name: banck-backend
+    build: '.'
+    volumes:
+      - .:/banckAPi
+    depends_on:
+      - dataBase
+    links:
+      - dataBase
+    ports:
+      - '3001:3001'
