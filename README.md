@@ -8,11 +8,11 @@
 
 - adicione um arquivo `.env` com as seguintes vaiaveis de ambiente.
 
-DB_PASS=`postgres`
+DB_PASS=`senha para o banco`
 
-DB_USER=`postgres`
+DB_USER=`nome user`
 
-DB_NAME=`bankDb`
+DB_NAME=`nome do banco`
 
 PORT=`3001`
 

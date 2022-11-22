@@ -10,6 +10,8 @@ RUN npm install --quiet
 
 RUN npm run prisma
 
+RUN npm run prismaT
+
 COPY . . 
 
 EXPOSE 3001
