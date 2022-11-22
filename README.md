@@ -16,6 +16,8 @@ DB_NAME=`nome do banco`
 
 PORT=`3001`
 
+DATABASE_URL=`postgresql://DB_USER:DB_PASS@localhost:5432/DB_NAME?shemas=public`
+
 Este projeto precisa do docker para subr o banco de dados, no seu terminal digite `docker compose up `, após a aplicação estiver em funcionamento, digite `npx prisma migrate dev`,
 caso não tenha o **Docker** instalado, acesse [Docker](https://www.docker.com/) para mais detalhes.
 
