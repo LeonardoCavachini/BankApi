@@ -1,20 +1,30 @@
 version: '3.9'
 
 services:
-  postgres:
+  database:
     image: 'postgres:latest'
     restart: always
-    container_name: prisma-postgres
-    expose:
-    - "5432"
+    container_name: ${HOST}
     ports:
       - "5432:5432"
-    command: -p 5432
     volumes:
       - ./data/dataBase:/data/dataBase
     environment:
       POSTGRES_PASSWORD: ${DB_PASS}
       POSTGRES_USERNAME: ${DB_USER}
       POSTGRES_DB: ${DB_NAME}
-      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_HOST: ${DB_HOST}
       
+  api:
+    container_name: backEnd
+    environment:
+      NODE_ENV: development
+      WAIT_HOSTS: ${HOST}:5432
+    depends_on:
+      - database
+    links:
+      - database
+    build: '.'
+    ports:
+      - "3001:3001"
+    command: sh -c "/wait && npm run prisma && npm run dev"

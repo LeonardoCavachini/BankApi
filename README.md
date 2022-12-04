@@ -2,6 +2,8 @@
 
 ## Rodando a aplicação
 
+caso não queira clonar o repositório você pode rodar a imagem docker `docker pull leocavachini/bankapi-api`
+
 1. Clone o repositório
 
 - `git clone https://github.com/LeonardoCavachini/BankApi.git`
@@ -14,11 +16,14 @@ DB_USER=`nome user`
 
 DB_NAME=`nome do banco`
 
-PORT=`3001`
+PORT=`ex:3001`
 
-DATABASE_URL=`postgresql://DB_USER:DB_PASS@localhost:5432/DB_NAME?shemas=public`
+HOST=`sera usado como nome do container`
 
-Este projeto precisa do docker para subr o banco de dados, no seu terminal digite `docker compose up `, após a aplicação estiver em funcionamento, digite `npx prisma migrate dev`,
+DATABASE_URL=`postgresql://${DB_USER}:${DB_PASS}@${HOST}:5432/${DB_NAME}?shemas=public`
+
+Este projeto precisa do docker para subr o banco de dados e aplicação, no seu terminal digite `docker compose up `.
+Prontinho agora você ja pode brincar com a aplicação.
 caso não tenha o **Docker** instalado, acesse [Docker](https://www.docker.com/) para mais detalhes.
 
 ## Endpoints

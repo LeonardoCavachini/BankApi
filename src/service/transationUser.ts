@@ -13,7 +13,7 @@ class TransationService {
     if (balance < value) {
       return { code: statusCodes.OK, message:'without balance.' };
     } else if (creditUser.username == debitUser.username) {
-      return { code: statusCodes.OK, message:'please change onde of the usernames' };
+      return { code: statusCodes.OK, message:'please change one of the usernames' };
     }
       await prismaClient.account.update({
         where: {
